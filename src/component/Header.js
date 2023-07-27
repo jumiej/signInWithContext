@@ -1,15 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+// import { useState } from 'react';
 import {SignInContext} from "../Contexts/SignInContext"
 
 
 const Header = () => {
-  const [Username, setUserName] = useState("");
-  const [showProfile, setShowProfile] = useState("false")
+const {showProfile} = useContext(SignInContext)
   return (
     <div>
-      <SignInContext.Provider value={{Username, setUserName, setShowProfile}}>
       <ul className='nav'>
         {showProfile ?  <li>
          <Link to="/Profile"> Profile</Link>
@@ -18,7 +16,6 @@ const Header = () => {
          <Link to="/"> SignIn</Link>
         </li> }
       </ul>
-      </SignInContext.Provider>
     </div>
   )
 }

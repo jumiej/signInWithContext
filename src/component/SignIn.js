@@ -1,9 +1,11 @@
 import React from 'react';
-import { useState, useContext} from 'react';
+import { useContext} from 'react';
 import { SignInContext } from '../Contexts/SignInContext';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const SignIn = () => {
-  const {setUserName, setShowProfile} = useContext(SignInContext);
+  const {setUserName,Username, setShowProfile} = useContext(SignInContext);
+  const navigate = useNavigate()
   return (
     <>
     <input type="text"
@@ -16,7 +18,9 @@ export const SignIn = () => {
     <input type="text" placeholder="Password..." />
 
     <button onClick={()=> {
-      setShowProfile(true)
+      if(Username){
+        navigate('/profile')
+      }
     }}>
       LOGIN
     </button>

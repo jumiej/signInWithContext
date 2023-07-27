@@ -1,16 +1,13 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Header from "./component/Header";
 import { SignIn } from "./component/SignIn";
 import Profile from "./component/Profile";
-// import { useState } from "react";
+import Header from "./component/Header";
+import { Routes, Route } from "react-router-dom";
+import { SignInProvider } from "./Contexts/SignInContext";
 
 
 function App() {
-
-  // const [showProfile, setShowProfile] = useState("false")
   return (
-   <> 
+   <SignInProvider> 
    <Header />
    <div className="App">
      <Routes>
@@ -18,7 +15,7 @@ function App() {
        <Route path="Profile" element={<Profile />}> </Route>
      </Routes>  
    </div>
-   </>
+   </SignInProvider>
   );
 }
 
